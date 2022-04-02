@@ -59,6 +59,9 @@ int main() {
 	}
 	cout << "Is the person an adult: " << p3->isAdult() << endl << endl;
 
+	delete p1;
+	delete p2;
+	delete p3;
 
 	_getch();
 	return 0;
