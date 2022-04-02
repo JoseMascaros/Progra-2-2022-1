@@ -3,28 +3,26 @@
 #include <string>
 
 using namespace std;
-// access levels -> private, public, protected
 
+//Access levels -> Private, Public, Protected
 class Person {
-private:
-	//Atributos -> Caracteristicas
-	string name;
+private: //Atributes
+	string name; // "Hola Mundo"
 	int age;
 	int DNI;
 	char gender;
-	double height;
 	double weight;
+	double height;
 
-public:
-	//Methods
-	//Constructor 
+public: //Methods -> Functions
+	//Constructors
 	Person() {
 		name = "";
 		age = 0;
-		generateDNI();
 		gender = 'M';
-		height = 0.0;
+		generateDNI();
 		weight = 0.0;
+		height = 0.0;
 		cout << "Constructor executed" << endl;
 	}
 
@@ -32,56 +30,18 @@ public:
 		this->name = name;
 		this->age = age;
 		this->gender = gender;
+		validateGender();
 		generateDNI();
-		height = 0.0;
 		weight = 0.0;
+		height = 0.0;
 		cout << "Constructor executed" << endl;
 	}
 
-	Person(string name, int age, char gender, double height, double weight) {
-		this->name = name;
-		this->age = age;
-		generateDNI();
-		this->gender = gender;
-		this->height = height;
-		this->weight = weight;
-		cout << "Constructor executed" << endl;
-	}
+	Person(string name, int age, char gender, double weight, double height);
 
+	//Destructor
 	~Person(){
 		cout << "Destructor executed" << endl;
-	}
-
-	bool isAdult() {
-		if (age >= 18)return true;
-		else return false;
-	}
-
-	void validateGender() {
-		if (gender != 'M' && gender != 'F') {
-			gender = 'M';
-		}
-	}
-
-	void getInformation() {
-		cout << "Name: " << name << endl;
-		cout << "Age: " << age << endl;
-		cout << "DNI: " << DNI << endl;
-		cout << "Gender: " << gender << endl;
-		cout << "Height: " << height << endl;
-		cout << "Weight: " << weight << endl;
- 	}
-
-	void generateDNI() {
-		DNI = rand() % 9999999 + 10000000;
-	}
-
-	int calculateIMC() {
-		double idealWeight = weight / (height * height);
-
-		if (idealWeight < 20) return -1;
-		if (idealWeight >= 20 && idealWeight <= 25) return 0;
-		if (idealWeight > 25) return 1;
 	}
 
 	//Getters
@@ -89,14 +49,22 @@ public:
 	int getAge() { return age; }
 	int getDNI() { return DNI; }
 	char getGender() { return gender; }
-	double getHeight() { return height; }
 	double getWeight() { return weight; }
+	double getHeight() { return height; }
 
 	//Setters
 	void setName(string v) { name = v; }
 	void setAge(int v) { age = v; }
 	void setDNI(int v) { DNI = v; }
 	void setGender(char v) { gender = v; }
-	void setHeight(double v) { height = v; }
 	void setWeight(double v) { weight = v; }
+	void setHeight(double v) { height = v; }
+
+	//Operations
+	//Implemented in Person.cpp
+	bool isAdult();
+	void validateGender();
+	void generateDNI();
+	void getInformation();
+	int calculateIMC();
 };
