@@ -1,10 +1,10 @@
 #pragma once
-#include "Motorcyclist.h"
+#include "Motocyclist.h"
 
 class ArrMotorcyclist {
 private:
 	int n;
-	Motorcyclist** arr; //unique
+	Motorcyclist** arr; //Unique
 
 public:
 	ArrMotorcyclist() {
@@ -14,22 +14,11 @@ public:
 
 	~ArrMotorcyclist(){}
 
-	void addMotorcyclist() {
-		Motorcyclist* m = new Motorcyclist();
-		Motorcyclist** aux; //duplicated
-		aux = new Motorcyclist * [n + 1];
-
-		for (int i = 0; i < n; i++) {
-			aux[i] = arr[i];
-		}
-
-		aux[n] = m;
-		n++;
-		arr = aux;
-	}
-
+	//CRUD
+	//Create - Read - Update - Delete
+	//CREATE
 	void addMotorcyclist(Motorcyclist* m) {
-		Motorcyclist** aux; //duplicated
+		Motorcyclist** aux; //Duplicated
 		aux = new Motorcyclist * [n + 1];
 
 		for (int i = 0; i < n; i++) {
@@ -41,9 +30,8 @@ public:
 		arr = aux;
 	}
 
-	void insertMotorcyclist(int position) {
-		Motorcyclist* m = new Motorcyclist();
-		Motorcyclist** aux; //duplicated
+	void insertInPosition(int position, Motorcyclist* m) {
+		Motorcyclist** aux; //Duplicated
 		aux = new Motorcyclist * [n + 1];
 
 		for (int i = 0; i < position; i++) {
@@ -60,20 +48,50 @@ public:
 		arr = aux;
 	}
 
+	//READ
+	void getRappiMotorcyclist() {
+		for (int i = 0; i < n; i++) {
+			if (arr[i]->getBusiness() == "Rappi") {
+				arr[i]->getInformation();
+			}
+		}
+	}
+
+	void getGloboMotorcyclist() {
+		for (int i = 0; i < n; i++) {
+			if (arr[i]->getBusiness() == "Globo") {
+				arr[i]->getInformation();
+			}
+		}
+	}
+
+	void getAllMotorcyclist() {
+		for (int i = 0; i < n; i++) {
+			arr[i]->getInformation();
+		}
+	}
+
+	//UPDATE
+	void editBusiness(int position, string newBusiness) {
+		arr[position]->setBusiness(newBusiness);
+	}
+
+
+	//DELETE
 	void deleteLastMotorcyclist() {
-		Motorcyclist** aux; //duplicated
+		Motorcyclist** aux; //Duplicated
 		aux = new Motorcyclist * [n - 1];
 
 		for (int i = 0; i < n - 1; i++) {
 			aux[i] = arr[i];
 		}
-
+		
 		n--;
 		arr = aux;
 	}
 
 	void deleteInPosition(int position) {
-		Motorcyclist** aux; //duplicated
+		Motorcyclist** aux; //Duplicated
 		aux = new Motorcyclist * [n - 1];
 
 		for (int i = 0; i < position; i++) {
@@ -88,27 +106,6 @@ public:
 		arr = aux;
 	}
 
-	void editBusiness(int position, string newBusiness) {
-		arr[position]->setBusiness(newBusiness);
-	}
-
-	void getAllMotorcyclist() {
-		//cout << "\t First Name " << "\t Last Name " << "\t Plate " << "\t Kilometers " << "\t Busis " << "\t Price " << endl;
-		for (int i = 0; i < n; i++) {
-			arr[i]->getInformation(); 
-		}
-	}
-
-	void getRappiMotocyclist() {
-		for (int i = 0; i < n; i++) {
-			if(arr[i]->getBusiness() == "Rappi") arr[i]->getInformation();
-		}
-	}
-
-	void getGloboMotocyclist() {
-		for (int i = 0; i < n; i++) {
-			if (arr[i]->getBusiness() == "Globo") arr[i]->getInformation();
-		}
-	}
-
+	
+		
 };
