@@ -14,38 +14,41 @@ private:
 public:
 	Square() {
 		x = 40;
-		y = 30;
+		y = 36;
 		dx = 2;
+		width = 17;
 		height = 3;
-		width = 12;
 	}
 
 	~Square(){}
 
+	//Erase - Move - Draw
+
 	void erase() {
-		Console::SetCursorPosition(x, y);     cout << "           ";
-		Console::SetCursorPosition(x, y + 1); cout << "           ";
-		Console::SetCursorPosition(x, y + 2); cout << "           ";
+		Console::SetCursorPosition(x, y);     cout << "                ";
+		Console::SetCursorPosition(x, y + 1); cout << "                ";
+		Console::SetCursorPosition(x, y + 2); cout << "                ";
 	}
 
-	void move(char index) {
-		switch (index)
+	void move(char key) {
+		switch (key)
 		{
 		case 'A':
-			if (x > 0) x -= dx; break;
+			if (x > 0)x -= dx; break;
 		case 'D':
-			if (x + width < 80) x += dx;
+			if (x + width < 75) x += dx;
 		}
 	}
 
 	void draw() {
 		Console::ForegroundColor = ConsoleColor::Red;
-		Console::SetCursorPosition(x, y);     cout << "<--------->";
-		Console::SetCursorPosition(x, y + 1); cout << "<----+---->";
-		Console::SetCursorPosition(x, y + 2); cout << "<--------->";
+		Console::SetCursorPosition(x, y);     cout << "<-------------->";
+		Console::SetCursorPosition(x, y + 1); cout << "<-------+------>";
+		Console::SetCursorPosition(x, y + 2); cout << "<-------------->";
 	}
 
 	Rectangle getRectangle() {
 		return Rectangle(x, y, width, height);
 	}
+
 };

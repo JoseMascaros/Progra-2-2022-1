@@ -1,33 +1,36 @@
-#include <conio.h>
 #include "Controller.h"
+#include <conio.h>
 
 int main() {
 	srand(time(NULL));
-	Console::SetWindowSize(85, 35);
+	Console::SetWindowSize(80, 40);
 	char key;
-
 	Controller* controller = new Controller();
 
 	while (1) {
 		Console::CursorVisible = false;
-		Console::SetCursorPosition(1, 1); cout << "Cont: " << controller->getCont();
 
-		//Erase
+		if (controller->getHp() == 0)break;
+		
 		controller->eraseEverything();
 
-		//Collision
 		controller->collision();
-		
-		//Move
-		controller->moveEverything();
+
 		if (_kbhit()) {
 			key = _getch();
 			key = toupper(key);
 			controller->getSquare()->move(key);
+			if (key == 'B')controller->addBall();
 		}
-		//Draw
-		controller->drawEverrything();
-
+		controller->moveEverything();
+		
+		controller->drawEverything();
 		_sleep(100);
 	}
+
+	system("cls");
+	cout << "Estuvo bueno pero ya volvio el internet";
+
+	_getch();
+	return 0;
 }
