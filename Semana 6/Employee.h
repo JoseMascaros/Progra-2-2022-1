@@ -4,7 +4,7 @@
 class Employee : public Person {
 protected:
 	int salary;
-	string seniority; 
+	string seniority;
 
 public:
 	Employee(){}

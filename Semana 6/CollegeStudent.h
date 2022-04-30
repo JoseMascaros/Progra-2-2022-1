@@ -9,19 +9,18 @@ protected:
 
 public:
 	CollegeStudent(){}
-	CollegeStudent(string name, int age, int id, string studyLevel, string collegeName, string degree) : Student(name, age, id, studyLevel) {
+	CollegeStudent(string name, int age, string studyLevel, string collegeName, string degree) : 
+		Student(name, age, studyLevel) {
+		courses = rand() % 10 + 1;
 		this->collegeName = collegeName;
 		this->degree = degree;
-		courses = rand() % 10 + 1;
 	}
-
 	~CollegeStudent(){}
-	
+
 	void getCollegeStudentInfo() {
 		getStudentInfo();
-		cout << "College name: " << collegeName << endl;
+		cout << "College Name: " << collegeName << endl;
 		cout << "Degree: " << degree << endl;
 		cout << "Courses: " << courses << endl;
 	}
-
 };

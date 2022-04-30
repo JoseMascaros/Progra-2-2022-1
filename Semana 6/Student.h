@@ -8,14 +8,16 @@ protected:
 
 public:
 	Student(){}
-	Student(string name, int age, int id, string studyLevel) : Person(name, age) {
-		this->id = id;
+	Student(string name, int age, string studyLevel) : Person(name, age) {
+		id = rand() % 8000 + 2000; //2000 - 9999
 		this->studyLevel = studyLevel;
 	}
 
+	~Student(){}
+
 	void getStudentInfo() {
 		getPersonInfo();
-		cout << "DNI: " << id << endl;
-		cout << "Study level: " << studyLevel << endl;
+		cout << "Id: " << id << endl;
+		cout << "Study Level: " << studyLevel << endl;
 	}
 };

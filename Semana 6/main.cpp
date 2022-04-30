@@ -2,10 +2,10 @@
 #include <conio.h>
 
 int main() {
-	srand(time(NULL));
-	Intern* n = new Intern("Rolando", 19, 2500, "SemiSenior", 897312, "College Incomplete", "UPC", "Systems Engineering", "THOR");
+	Intern* n = new Intern("Josue", 20, 2300, "Semi Senior", "College Incomplete", "UPC",
+		"Systems Engineering", "THOR");
 
-	n->getInternInfo();
+	n->getCollegeStudentInfo();
 
 	_getch();
 	return 0;
